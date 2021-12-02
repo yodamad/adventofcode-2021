@@ -5,19 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fe1ee0-d016-4e8f-b135-818fef24a536" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/aoc/day1/Day1.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/aoc/shared/IO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/aoc/day1/Day1Test.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/day1/demo.input" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/day1/step1.input" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/aoc/day2/Day2.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/aoc/day2/Day2Test.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/day2/demo.input" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/day2/step1.input" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +54,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="21gHIlQBXK5kxymTrMvNNpeTuKA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -72,12 +76,12 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.Day2Test">
     <configuration name="Day1Test" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="aoc.day1.Day1Test" />
       <module name="adventofcode-2021.test" />
@@ -85,8 +89,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day2Test" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aoc.day2.Day2Test" />
+      <module name="adventofcode-2021.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.Day2Test" />
         <item itemvalue="Kotlin.Day1Test" />
       </list>
     </recent_temporary>
@@ -100,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638355736870</updated>
       <workItem from="1638355739202" duration="3736000" />
-      <workItem from="1638432311056" duration="1628000" />
+      <workItem from="1638432311056" duration="3418000" />
     </task>
     <servers />
   </component>
