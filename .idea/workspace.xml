@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8fe1ee0-d016-4e8f-b135-818fef24a536" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/aoc/day2/Day2.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/aoc/day2/Day2Test.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/day2/demo.input" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/day2/step1.input" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/aoc/day4/Day4.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/aoc/day4/Day4Test.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/day4/demo.input" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/day4/step1.input" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -81,7 +81,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="http.proxy" />
   </component>
-  <component name="RunManager" selected="Kotlin.Day2Test">
+  <component name="RunManager" selected="Kotlin.Day4Test">
     <configuration name="Day1Test" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="aoc.day1.Day1Test" />
       <module name="adventofcode-2021.test" />
@@ -96,8 +96,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Day3" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aoc.day3.Day3" />
+      <module name="adventofcode-2021.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Day3Test" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aoc.day3.Day3Test" />
+      <module name="adventofcode-2021.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Day4Test" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="aoc.day4.Day4Test" />
+      <module name="adventofcode-2021.test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.Day4Test" />
+        <item itemvalue="Kotlin.Day3Test" />
+        <item itemvalue="Kotlin.Day3" />
         <item itemvalue="Kotlin.Day2Test" />
         <item itemvalue="Kotlin.Day1Test" />
       </list>
@@ -113,6 +137,8 @@
       <updated>1638355736870</updated>
       <workItem from="1638355739202" duration="3736000" />
       <workItem from="1638432311056" duration="3418000" />
+      <workItem from="1638521255394" duration="8594000" />
+      <workItem from="1638734963516" duration="5276000" />
     </task>
     <servers />
   </component>
@@ -129,5 +155,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
