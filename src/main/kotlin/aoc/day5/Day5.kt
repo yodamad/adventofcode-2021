@@ -11,7 +11,7 @@ class Day5 {
         val vectors = filename.getLines(DAY)
             .map { computeVector(it) }.toMutableList()
 
-        val t = vectors//.filter { it.isNotDiag() }
+        val t = vectors.filter { it.isNotDiag() }
             .map { it.allPoints() }
             .flatten()
             .groupBy { e -> e }
@@ -37,8 +37,7 @@ data class Vector(val x1: Int, val y1: Int, val x2: Int, val y2: Int) {
         } else if (y1 == y2) {
             computePoint(x1, x2).forEach { points.add(Pair(it, y1)) }
         } else {
-            computePoint(x1, x2).forEachIndexed { idx, i -> points.add(Pair(minOf(x1, x2) + idx, computeY(idx))) }
-            //println(points)
+            computePoint(x1, x2).forEachIndexed { idx, _ -> points.add(Pair(minOf(x1, x2) + idx, computeY(idx))) }
         }
         return points
     }
