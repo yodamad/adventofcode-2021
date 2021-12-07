@@ -56,8 +56,4 @@ class Day6 {
     }
 }
 
-inline fun <T> Iterable<T>.sumByLong(selector: (T) -> Long): Long {
-    return map { selector(it) }.sum()
-}
-
 data class Lanternfish(var life: Int)
