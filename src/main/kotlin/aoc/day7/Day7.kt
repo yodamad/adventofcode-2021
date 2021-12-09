@@ -1,9 +1,7 @@
 package aoc.day7
 
 import aoc.shared.getLines
-import javax.swing.text.html.HTML.Attribute.N
 import kotlin.math.abs
-import kotlin.math.sqrt
 
 
 class Day7 {
