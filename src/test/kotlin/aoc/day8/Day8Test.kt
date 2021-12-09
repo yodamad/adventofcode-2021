@@ -5,7 +5,7 @@ class Day8Test {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            Day8Test().testCompleteDemo()
+            Day8Test().testComplete()
         }
     }
 
@@ -19,5 +19,9 @@ class Day8Test {
 
     fun testCompleteDemo() {
         Day8().getAllNb("demo.input")
+    }
+
+    fun testComplete() {
+        Day8().getAllNb("step1.input")
     }
 }

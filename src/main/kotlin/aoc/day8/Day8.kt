@@ -34,45 +34,56 @@ class Day8 {
     }
 
     fun getAllNb(filename: String) {
+        val result = filename.getLines(DAY).sumOf { getLineNb(it).toInt() }
+        println(result)
+    }
+
+    fun getLineNb(line: String): String {
         val segments = mutableMapOf(0 to getChars(), 1 to getChars(), 2 to getChars(),
             3 to getChars(), 4 to getChars(), 5 to getChars(), 6 to getChars())
 
-        val one = getSegmentsForNb(filename, 2)[0]
-        val seven = getSegmentsForNb(filename, 3)
-        val four = getSegmentsForNb(filename, 4)
+        val t = line.split(" | ").first().split(" ")
+        val ee = t.map { e -> e.toList() }.flatten().groupBy { a -> a }.map { b -> b.key to b.value.size }
+
+        segments[5] = ee.filter { k -> k.second == 9 }.map { e -> e.first }.toMutableList()
+        segments[4] = ee.filter { k -> k.second == 4 }.map { e -> e.first }.toMutableList()
+        segments[1] = ee.filter { k -> k.second == 6 }.map { e -> e.first }.toMutableList()
+
+        val one = getSegmentsForNb(line, 2)[0]
+        val seven = getSegmentsForNb(line, 3)
+        val four = getSegmentsForNb(line, 4)
 
         // Segments for 1
-        segments[2] = segments[2]!!.intersect(one.toMutableList()).toMutableList()
-        segments[5] = segments[2]!!.toMutableList()
+        segments[2] = segments[2]!!.intersect(one.toMutableList()).filter { k -> !segments[5]!!.contains(k) }.toMutableList()
+
         // 7 has 2 out of 3 segments in common with 1 so can found one
-        segments[0] = seven.first().toMutableList().filter { e ->
-            !segments[2]!!.contains(e) } as MutableList<Char>
+        segments[0] = seven.first().toMutableList().subtract(segments[2]!!.plus(segments[5]!!)).toMutableList()
         // 4 has 2 out of 4 segments in common with 1
-        segments[1] = four.first().toMutableList().filter { f ->
-            !segments[2]!!.contains(f) && f.toString() != "" } as MutableList<Char>
-        segments[3] = segments[1]!!.toMutableList()
+        segments[3] = four.first().toMutableList().subtract(segments[1]!!.plus(segments[2]!!).plus(segments[5]!!)).toMutableList()
 
-        segments[4] = segments[4]!!.filter { c ->
-            !segments[2]!!.contains(c)
-                    && !segments[1]!!.contains(c)
-                    && !segments[0]!!.contains(c) } as MutableList<Char>
-        segments[6] = segments[4]!!.toMutableList()
+        var letters = "abcdefg"
+        IntRange(0, 5).forEach{ idx -> letters = letters.replace(segments[idx]?.get(0)?.toString()!!, "") }
+        segments[6] = letters.toMutableList()
 
-        println(segments)
-
-        digits.map { e -> e.key to e.value.joinToString("") }
+        val eval = digits.map { e -> e.key to e.value.joinToString("") }
             .map { s -> s.first to replaceBySegment(segments, s.second) }
+            .map { e -> e.second to e.first }
+
+        return line.split(" | ")[1].split(" ")
+            .map { s -> s.toMutableList().sorted().joinToString("") }
+            .map { e -> eval.first { k -> k.first == e } }
+            .map { i -> i.second }
+            .joinToString("")
+
     }
 
-    private fun replaceBySegment(segments: MutableMap<Int, MutableList<Char>>, segment: String) {
-        val s = segments.filter { it.value.size == 1 }
-            .map { e -> segment.replace(e.key.toString(), segments[e.key]!!.joinToString("")) }.toString()
-        println(s)
-    }
+    private fun replaceBySegment(segments: MutableMap<Int, MutableList<Char>>, segment: String) =
+        segment.map { c -> segments[c.toString().toInt()]?.get(0) ?: "" }
+            .joinToString("").toMutableList().sorted()
+            .joinToString("")
 
-    private fun getSegmentsForNb(filename: String, nb : Int) =
-        filename.getLines(DAY).first().split("|").map { s -> s.split(" ") }
-        .flatten().filter { e -> e.length == nb }
+    private fun getSegmentsForNb(line: String, nb : Int) =
+        line.split("|").map { s -> s.split(" ") }.flatten().filter { e -> e.length == nb }
 
     private fun getChars() = "abcdefg".toMutableList()
 }
