@@ -11,9 +11,17 @@ class Day10 {
         println(result)
     }
 
-    private fun checkLine(line: String) : Int {
+    fun fillIncomplete(filename: String) {
+        val incompletes = filename.getLines(DAY)
+            .map { checkLine(it, true) }.filter { i -> i > -1 }
+            .sorted()
+        val result = incompletes[incompletes.size / 2]
+        println(result)
+    }
+
+    private fun checkLine(line: String, incomplete: Boolean = false) : Long {
         val openedElmts = ArrayDeque<Char>()
-        var sum = 0
+        var sum = 0L
         run loop@ {
             line.forEach { c ->
                 if (c in listOf('(', '[', '{', '<')) {
@@ -41,17 +49,25 @@ class Day10 {
                     }
                 }
             }
+
+            if (incomplete) {
+                return openedElmts.reversed().map { computeCharValue(it) }.reduce { acc, v ->  acc * 5 + v }
+            }
         }
-        //println(sum)
+        if (incomplete) return -1
         return sum
     }
 
-    private fun computeCharValue(c: Char) =
+    private fun computeCharValue(c: Char) : Long =
         when (c) {
             ')' -> 3
             ']'-> 57
             '}' -> 1197
             '>' -> 25137
+            '(' -> 1
+            '[' -> 2
+            '{' -> 3
+            '<' -> 4
             else -> 0
         }
 }
