@@ -4,7 +4,8 @@ class Day9Test {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            Day9Test().testStep1()
+            val r = Day9Test().testDemoBasins()
+            println(r)
         }
     }
 
@@ -14,5 +15,9 @@ class Day9Test {
 
     fun testStep1() {
         Day9().getLowPositions("step1.input")
+    }
+
+    fun testDemoBasins() {
+        Day9().getBasins("demo.input")
     }
 }
