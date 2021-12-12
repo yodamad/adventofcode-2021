@@ -6,6 +6,7 @@ class Day9 {
 
     val DAY = "day9"
 
+    // Part 1
     fun getLowPositions(filename: String): Int {
         val matrix = filename.getLines(DAY).matrix()
         val sumOfLowPoints = getMapWithLowPoints(matrix).flatten().sum()
@@ -14,7 +15,7 @@ class Day9 {
     }
 
     private fun getMapWithLowPoints(matrix: List<List<Int>>) = matrix.mapIndexed() {
-                lineIdx, l -> l.mapIndexed { idx, i ->
+        lineIdx, l -> l.mapIndexed { idx, i ->
             when (lineIdx) {
                 0 -> {
                     when {
@@ -42,38 +43,71 @@ class Day9 {
                 }
             }
         }
-        }
-
-    fun getBasins(filename: String): List<List<Int>> {
-        val matrix = filename.getLines(DAY).matrix().toMutableList()
-        val result = matrix.mapIndexed { lineIdx, l ->
-            computeLine(matrix, lineIdx, l)
-        }
-        return result
     }
 
-    private fun computeLine(matrix: List<MutableList<Int>>, lineIdx: Int, l: List<Int>): List<Int> {
-        val r = l.mapIndexed { idx, i ->
-            var basinSize = 0
-            if (i != 9 && i != -1) {
-                basinSize++
-                matrix[lineIdx][idx] = -1
+    // Part 2
+    private lateinit var mapping: List<List<Int>>
+    var analyzed = mutableListOf<Pair<Int, Int>>()
 
-                for (r in lineIdx until matrix.size) {
-                    var newIdx = idx+1
-                    while (newIdx < l.size && matrix[lineIdx][newIdx] != 9) {
-                        matrix[lineIdx][newIdx] = -1
-                        newIdx++
-                        basinSize++
+    fun getBasins(filename: String) {
+        val positions = getPositionsOfLowPoints(filename.getLines(DAY).matrix())
+        mapping = filename.getLines(DAY).matrix().toMutableList()
+        var basins = mutableListOf<MutableList<Pair<Int,Int>>>()
+        positions.flatten().forEach {
+            basins.add(analysePoint(it.first, it.second))
+        }
+        //basins.sortedByDescending { it.size }.forEach { println(it) }
+        val result = basins.sortedByDescending { it.size }
+            .take(3).fold(1) { a, c -> a * c.size }
+        println(result)
+    }
+
+    private fun getPositionsOfLowPoints(matrix: List<List<Int>>) = matrix.mapIndexed() {
+            lineIdx, l -> l.mapIndexed { idx, i ->
+            when (lineIdx) {
+                0 -> {
+                    when {
+                        idx == 0 && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        idx == (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        idx > 0 && idx < (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        else -> -1 to -1
+                    }
+                }
+                (matrix.size - 1) -> {
+                    when {
+                        idx == 0 && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx-1][idx] -> lineIdx to idx
+                        idx == (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx-1][idx]  -> lineIdx to idx
+                        idx > 0 && idx < (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx-1][idx] -> lineIdx to idx
+                        else -> -1 to -1
+                    }
+                }
+                else -> {
+                    when {
+                        idx == 0 && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx-1][idx] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        idx == (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx-1][idx] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        idx > 0 && idx < (l.size - 1) && i < matrix[lineIdx][idx-1] && i < matrix[lineIdx][idx+1] && i < matrix[lineIdx-1][idx] && i < matrix[lineIdx+1][idx] -> lineIdx to idx
+                        else -> -1 to -1
                     }
                 }
             }
-            // Set basinSize
-            //println(basinSize)
-            basinSize
         }
-        println(r)
-        return r
+    }
+
+    private fun analysePoint(lineIdx: Int, columnIdx: Int, goingLeft: Boolean = false, goingUp: Boolean = false): MutableList<Pair<Int, Int>> {
+        analyzed.add(lineIdx to columnIdx)
+        val currentBasin = mutableListOf<Pair<Int, Int>>()
+        if (lineIdx == -1 || columnIdx == -1 || lineIdx == mapping.size
+            || columnIdx == mapping[lineIdx].size || mapping[lineIdx][columnIdx] == 9
+            || currentBasin.contains(lineIdx to columnIdx)) {
+            return emptyList<Pair<Int,Int>>().toMutableList()
+        } else {
+            currentBasin.add(lineIdx to columnIdx)
+            if (!analyzed.contains(lineIdx-1 to columnIdx)) currentBasin.addAll(analysePoint(lineIdx-1, columnIdx, goingUp))
+            if (!analyzed.contains(lineIdx to columnIdx-1)) currentBasin.addAll(analysePoint(lineIdx, columnIdx-1))
+            if (!analyzed.contains(lineIdx to columnIdx+1)) currentBasin.addAll(analysePoint(lineIdx, columnIdx+1))
+            if (!analyzed.contains(lineIdx+1 to columnIdx)) currentBasin.addAll(analysePoint(lineIdx+1, columnIdx))
+            return currentBasin
+        }
     }
 }
 
