@@ -4,7 +4,7 @@ class Day9Test {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            Day9Test().testAnotherBasins()
+            Day9Test().testBasins()
             //Day9Test().testDemoBasins()
         }
     }
@@ -21,15 +21,7 @@ class Day9Test {
         Day9().getBasins("demo.input")
     }
 
-    fun testDemoAnotherBasins() {
-        Day9().anotherAttempt("demo.input")
-    }
-
     fun testBasins() {
         Day9().getBasins("step1.input")
-    }
-
-    fun testAnotherBasins() {
-        Day9().anotherAttempt("step1.input")
     }
 }
